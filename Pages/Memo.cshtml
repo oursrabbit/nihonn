@@ -1,0 +1,75 @@
+﻿@page
+@model Nihonn.Pages.MemoModel
+@{
+}
+
+
+<div class="d-flex flex-column align-items-center align-content-center">
+    <div class="row" style="padding-bottom: 100px;padding-top: 100px;">
+        <div class="col-md-12">
+            <button class="btn btn-primary btn-lg mr-3" id="@Model.Word.Audiofile">播放</button>
+            <script>
+                document.getElementById("@Model.Word.Audiofile").addEventListener("click", function () {
+                    var audio = new Audio("/wav/" + "@Model.Word.Audiofile" + ".mp3");
+                    audio.play();
+                });
+            </script>
+        </div>
+    </div>
+    <form>
+        <div class="d-flex flex-column align-items-center align-content-center">
+            <div class="row" style="padding-bottom: 20px;">
+                <div class="col-md-12">
+                    @if (Model.Word.CorrectlyMemo)
+                    {
+                        <input class="form-control-lg" type="text" placeholder="输入片假名" style="margin-right: 10px;" name="katakana" value="@Model.Word.Katakana" />
+                    }
+                    else
+                    {
+                        <input class="form-control-lg" type="text" placeholder="输入片假名" style="margin-right: 10px;" name="katakana" />
+                    }
+                </div>
+            </div>
+            <div class="row" style="padding-bottom: 100px;">
+                <div class="col-md-12">
+                    <button class="btn btn-primary btn-lg mr-3" name="button_page" value="check">确认</button>
+                </div>
+            </div>
+            @if (Model.CheckAns != 0)
+            {
+                <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-md-12">
+                        @if (Model.CheckAns == 1)
+                        {
+                            <div>
+                                正确
+                            </div>
+                        }
+                        else if (Model.CheckAns == 2)
+                        {
+                            <div>
+                                错误
+                            </div>
+                        }
+                    </div>
+                </div>
+            }
+            @if (Model.ShowAns)
+            {
+                <div class="row" style="padding-bottom: 20px;">
+                    <div class="col-md-12">
+                        <div>
+                            @Model.Word.Katakana
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="row">
+                <div class="col-md-12">
+                    <button class="btn btn-primary btn-lg mr-3" name="button_page" value="next">下一个</button>
+                    <button class="btn btn-primary btn-lg mr-3" name="button_page" value="unknow">不认识</button>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>

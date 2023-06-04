@@ -1,0 +1,38 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net6.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="Pages\Model\**" />
+    <Content Remove="Pages\Model\**" />
+    <EmbeddedResource Remove="Pages\Model\**" />
+    <None Remove="Pages\Model\**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Remove="Model\ColInfo.cs" />
+    <Compile Remove="Model\RowInfo.cs" />
+    <Compile Remove="Model\TableInfo.cs" />
+    <Compile Remove="Model\UserInfo.cs" />
+    <Compile Remove="Pages\MongoDBHelper.cs" />
+    <Compile Remove="Pages\NewWordPage.cshtml.cs" />
+    <Compile Remove="Pages\ReWordPage.cshtml.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Remove="Pages\NewWordPage.cshtml" />
+    <Content Remove="Pages\ReWordPage.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MongoDB.Bson" Version="2.19.2" />
+    <PackageReference Include="MongoDB.Driver" Version="2.19.2" />
+    <PackageReference Include="MongoDB.Driver.Core" Version="2.19.2" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
+  </ItemGroup>
+
+</Project>

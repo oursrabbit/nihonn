@@ -1,0 +1,58 @@
+﻿@page
+@model Nihonn.Pages.MemoReviewModel
+@{
+}
+
+<div class="container">
+    <h1>测试结果</h1>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>测试状态</th>
+                <th>单词</th>
+                <th>片假名</th>
+                <th>中文</th>
+                <th>音频</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var word in Model.Words)
+            {
+                <tr>
+                    @if (word.ErrorInMemo)
+                    {
+                        <td>错</td>
+                    }
+                    else
+                    {
+                        <td>对</td>
+                    }
+                    <td><a href="/Details/1">@word.Kanji</a></td>
+                    <td>@word.Katakana</td>
+                    <td>@word.Translate</td>
+                    <td>
+                        <button id="@word.Audiofile">播放</button>
+                        <script>
+                            document.getElementById("@word.Audiofile").addEventListener("click", function () {
+                                var audio = new Audio("/wav/" + "@word.Audiofile" + ".mp3");
+                                audio.play();
+                            });
+                        </script>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+<div class="container">
+    <div class="d-flex justify-content-center">
+        <div class="row">
+            <div class="col-md-12">
+                <form>
+                    <button class="btn btn-primary btn-lg mr-3" name="button_page" value="update">提交结果</button>
+                    <button class="btn btn-secondary btn-lg ml-3" name="button_page" value="back">返回首页</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

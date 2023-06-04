@@ -1,0 +1,19 @@
+﻿@page
+@model IndexModel
+@{
+	ViewData["Title"] = "Home page";
+}
+
+
+
+<div class="container-fluid d-flex justify-content-center align-items-center" style="height: 100vh;">
+	<div class="row">
+		<div class="col-md-12">
+			<form>
+				<button class="btn btn-primary btn-lg mr-3" name="button_page" value="re">复习（@Model.MemoCount）</button>
+				<button class="btn btn-secondary btn-lg ml-3" name="button_page" value="new">背单词</button>
+				<button class="btn btn-secondary btn-lg ml-3" name="button_page" value="all">查看所有单词</button>
+			</form>
+		</div>
+	</div>
+</div>
